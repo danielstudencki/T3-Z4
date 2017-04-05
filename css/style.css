@@ -1,0 +1,144 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* END OF RESET CSS */
+
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+#player {
+    border: 1px solid #111;
+    box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+}
+
+#movie-title {
+    text-align: center;
+    color: #fff;
+    background-color: #555;
+    max-height: 30px;
+}
+
+#content {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-grow: 1;
+    background-color: #111;
+
+}
+#content video {
+    flex-grow: 1;
+}
+
+#button-bar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: #555;
+    min-height: 50px;
+}
+
+#button-bar * {
+    box-sizing: border-box;
+    border: 1px solid #444;
+}
+#play-button {
+    content: "";
+    background: #000 url("../img/play-button.svg") no-repeat center;
+    background-size: 75%;
+    margin: -25px;
+    left: 50%;
+    top: 50%;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.8;
+    visibility: hidden;
+}
+#play-button:hover {
+    opacity: 1;
+}
+
+#control-button {
+    background: url("../img/play-button.svg") no-repeat center;
+    background-size: 75%;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+}
+#control-button:hover {
+    background-size: 80%;
+}
+
+.time {
+    box-sizing: border-box;
+    border: 1px solid #444;
+    text-align: center;
+    padding: 15px 0;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    
+}
+#progress-bar {
+    flex-grow: 1;
+}
+

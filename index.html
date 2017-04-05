@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>Web Video Player</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <section id="player">
+            
+            <header id="movie-title">
+                <p>Harry Potter - Chamber of Secret.mp4</p>
+            </header>
+
+            <div id="content">
+
+                <div id="play-button"></div>
+                <video id="movie" width="100%" preload="metadata">
+
+                    <!-- MP4 must be first for iPad! -->
+                    <source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4"><!-- Safari / iOS, IE9 -->
+                    <source src="http://clips.vorwaerts-gmbh.de/VfE.webm" type="video/webm"><!-- Chrome10+, Ffx4+, Opera10.6+ -->
+                    <source src="http://clips.vorwaerts-gmbh.de/VfE.ogv" type="video/ogg"><!-- Firefox3.6+ / Opera 10.5+ -->
+                    <!-- fallback to Flash: -->
+                    <object width="640" height="360" type="application/x-shockwave-flash" data="player.swf">
+                        <!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
+                        <param name="movie" value="player.swf">
+                        <param name="flashvars" value="autostart=true&amp;controlbar=over&amp;image=poster.jpg&amp;file=http://clips.vorwaerts-gmbh.de/VfE_flash.mp4">
+                    </object>
+
+                </video>
+
+            </div>
+
+            <div id="button-bar">
+
+                <div id="control-button"></div>
+                <div class="time" id="current-time">0:00</div>
+                <input type="range" id="progress-bar" value="0" max="100">
+                <div class="time" id="total-time">0:00</div>
+
+                </div>
+            </div>
+        
+        </section>
+ 
+        <script src="js/script.js"></script>
+    </body>
+</html>
