@@ -81,7 +81,6 @@ body {
     text-align: center;
     flex-grow: 1;
     background-color: #111;
-
 }
 #content video {
     flex-grow: 1;
@@ -90,6 +89,7 @@ body {
 #button-bar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
     background-color: #555;
     min-height: 50px;

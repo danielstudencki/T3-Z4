@@ -10,30 +10,32 @@
             this.currentTimeField = document.querySelector('#current-time');
             this.totalTime = document.querySelector('#total-time');
             this.progressBar = document.querySelector('#progress-bar');
-
-console.dir(this.progressBar);
+            this.movieTitle = document.querySelector('#movie-title');
 
             this.video.onloadedmetadata = this.assignActions.bind(this);
+
+            console.dir(this.video)
 
         },
 
         assignActions: function() {
                         
             this.togglePlayButtonVisibility();
+            this.setMovieTitle();
             this.setDuration();
 
-            this.playButton.onclick = this.togglePlaying.bind(this);
-
+            this.video.onclick = this.togglePlaying.bind(this);
+            this.video.ontimeupdate = this.setCurrentTimeValue.bind(this);
             this.video.onended = function() {
+
                 this.setControlButtonIcon();
+                this.setPlayButtonIcon("replay");
                 this.togglePlayButtonVisibility();
+
             }.bind(this);
 
             this.controlButton.onclick = this.togglePlaying.bind(this);
-    
-            this.video.onclick = this.togglePlaying.bind(this);
-            this.video.ontimeupdate = this.setCurrentTimeValue.bind(this);
-
+            this.playButton.onclick = this.togglePlaying.bind(this);
             this.progressBar.oninput = this.setCurrentPlayTime.bind(this);
             
         },
@@ -63,6 +65,13 @@ console.dir(this.progressBar);
 
         },
 
+        setMovieTitle: function() {
+            
+            var title = this.video.currentSrc;
+            this.movieTitle.innerHTML = '<p> Żródło - ' + title + '</p>';
+
+        },
+
         setProgressBarValue: function(time) {
             
             var currentTime = Math.round(time),
@@ -72,17 +81,30 @@ console.dir(this.progressBar);
 
         },
 
+        setPlayButtonIcon: function(iconName) {
+            if(iconName){
+                this.playButton.setAttribute("style", 'background: #000 url("img/'+ iconName +'-button.svg") no-repeat center; background-size: 75%;');
+            }
+        },
+
         setControlButtonIcon: function() {
 
             if(this.video.paused) {
+
                 this.controlButton.setAttribute("style", 'background: url("img/play-button.svg") no-repeat center; background-size: 75%;');
                 return;
+
             }
 
             this.controlButton.setAttribute("style", 'background: url("img/pause-button.svg") no-repeat center; background-size: 75%;');
         },
 
         togglePlaying: function() {
+
+            if(this.video.currentTime === this.video.duration) {
+                this.setPlayButtonIcon("play");
+                this.togglePlayButtonVisibility();
+            }
 
             if(this.video.paused) {
                 this.video.play();
@@ -125,4 +147,5 @@ console.dir(this.progressBar);
     };
 
     videoPlayer.init();
+
 })();
