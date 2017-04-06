@@ -13,9 +13,7 @@
             this.movieTitle = document.querySelector('#movie-title');
 
             this.video.onloadedmetadata = this.assignActions.bind(this);
-
-            console.dir(this.video)
-
+            
         },
 
         assignActions: function() {
